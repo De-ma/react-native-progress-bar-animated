@@ -5,6 +5,7 @@ import {
   View,
   Animated,
   Easing,
+  Text,
 } from 'react-native';
 
 class ProgressBar extends React.Component {
@@ -86,7 +87,6 @@ class ProgressBar extends React.Component {
         borderWidth: this.props.borderWidth,
         borderColor: this.props.borderColor,
         borderRadius: this.props.borderRadius,
-        backgroundColor: this.props.underlyingColor
       }}
       >
         <Animated.View style={{
@@ -95,7 +95,14 @@ class ProgressBar extends React.Component {
           backgroundColor: this.backgroundInterpolationValue || this.props.backgroundColor,
           borderRadius: this.props.borderRadius,
         }}
-        />
+        >
+        <Text
+        style={{
+          textAlignVertical: 'center',
+          textAlign: 'center',
+          paddingTop: this.props.height / 4,
+
+        }}>{this.props.description}</Text></Animated.View>
       </View>
     );
   }
@@ -103,6 +110,7 @@ class ProgressBar extends React.Component {
 
 ProgressBar.propTypes = {
 
+  description: PropTypes.string,
   /**
    * Bar values
    */
